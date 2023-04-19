@@ -26,3 +26,4 @@ def make_app(settings: Settings) -> FastAPI:
         return 'build/index.html'
 
     return app
+#Alex Shopiak was here
