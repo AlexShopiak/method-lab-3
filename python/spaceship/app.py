@@ -27,3 +27,4 @@ def make_app(settings: Settings) -> FastAPI:
 
     return app
 #Alex Shopiak was here
+#Alex Shopiak was here twice
