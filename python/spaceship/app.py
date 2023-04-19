@@ -1,3 +1,4 @@
+import numpy as np 
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from starlette.responses import FileResponse
@@ -24,6 +25,18 @@ def make_app(settings: Settings) -> FastAPI:
     @app.get('/', include_in_schema=False, response_class=FileResponse)
     async def root() -> str:
         return 'build/index.html'
+
+    @app.get('/matrix')
+    def matrix() -> dict:
+        matrix_a = np.random.randint(1,9,(10,10))
+        matrix_b = np.random.randint(1,9,(10,10))
+        product = np.dot(matrix_a,matrix_b)
+        res = {
+            "matrix_a":matrix_a.tolist(),
+            "matrix_b":matrix_b.tolist(),
+            "product":product.tolist()
+        }
+        return res
 
     return app
 #Alex Shopiak was here
